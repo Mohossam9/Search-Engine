@@ -1,0 +1,49 @@
+﻿@model Search_Engine.Models.searchquery
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/geturls_stylesheet.css" rel="stylesheet" type="text/css" />
+    <title>Urls</title>
+</head>
+<body>
+    <form>
+        <div>
+            <input type="email" id="inputwords" class="form-control" size="50" value="@ViewBag.query" required>
+            <div>
+                <button type="button" class="btn btn-danger">Search</button>
+            </div>
+        </div>
+        <!-- Default unchecked -->
+        <div class="combobox">
+            <label for="spellchecker"> Do you mean :</label>
+
+            <select id="spellchecker" >
+                <option disabled selected value> -- select a @ViewBag.type -- </option>
+                @{
+                    List<String> items = ViewBag.nearest_words;
+                    if (items!=null)
+                    {
+                        foreach (var item in ViewBag.nearest_words)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+
+        @foreach(var item in ViewBag.urls)
+        {
+            <a href="@item">@item</a>
+            <br />
+        }
+    </form>
+</body>
+</html>
+

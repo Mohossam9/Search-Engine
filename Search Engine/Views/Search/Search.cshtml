@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search Engine</title>
+    <meta charset="utf-8">
+    <link href="~/Search Engine.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+   
+        <img id="image" src="~/world.png" />
+        <div class="input-group">
+
+            <input type="text" id="inputquery" name="searchterm" class="form-control" size="50" placeholder="What do you search for .." required>
+            <div class="input-group-btn">
+                <input type="submit" class="btn btn-danger" name="searchbtn" value="Search"
+                       onclick="location.href='@Url.Action("geturls", "Search")?searchterms='+$('#inputquery').val()+'&type='+ $('#choice:checked').val()" >
+            </div>
+
+
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="radio" class="custom-control-input"  id="choice" name="radio" value="spell" checked="checked">
+            <label class="custom-control-label" for="defaultUnchecked">Apply Spelling Correction</label>
+            <input type="radio" class="custom-control-input"  id="choice" name="radio" value="soundex">
+            <label class="custom-control-label" for="defaultUnchecked">Apply Phonetic Correction</label>
+        </div>
+
+   
+</body>
+</html>
